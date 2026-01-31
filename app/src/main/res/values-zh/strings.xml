@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">待办事项</string>
+
+    <!-- 登录界面 -->
+    <string name="login_welcome">欢迎回来</string>
+    <string name="login_subtitle">登录以继续</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+    <string name="no_account">还没有账户？注册</string>
+
+    <!-- 注册界面 -->
+    <string name="register_title">创建账户</string>
+    <string name="register_subtitle">注册开始使用</string>
+    <string name="display_name">显示名称</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="sign_up">注册</string>
+    <string name="have_account">已有账户？登录</string>
+
+    <!-- 任务头部 -->
+    <string name="my_tasks">我的任务</string>
+    <string name="tasks_summary">%1$d 今日任务 · %2$d 已完成</string>
+    <string name="welcome_user">欢迎，%1$s</string>
+
+    <!-- 任务标签页 -->
+    <string name="tab_all">全部</string>
+    <string name="tab_active">进行中</string>
+    <string name="tab_completed">已完成</string>
+
+    <!-- 任务输入 -->
+    <string name="add_task_hint">添加新任务...</string>
+    <string name="add_task">添加任务</string>
+    <string name="category_label">分类：</string>
+
+    <!-- 任务项 -->
+    <string name="delete_task">删除任务</string>
+    <string name="due_today_at">今日到期 %1$s</string>
+    <string name="due_date">将于 %1$s 到期</string>
+
+    <!-- 编辑对话框 -->
+    <string name="edit_task">编辑任务</string>
+    <string name="title">标题</string>
+    <string name="description_optional">描述（可选）</string>
+    <string name="due_date_label">截止日期：</string>
+    <string name="select_date">选择日期</string>
+    <string name="not_set">未设置</string>
+    <string name="clear">清除</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+    <string name="ok">确定</string>
+
+    <!-- 任务列表 -->
+    <string name="no_tasks">暂无任务。\n添加任务开始使用！</string>
+
+    <!-- 菜单 -->
+    <string name="menu">菜单</string>
+    <string name="logout">登出</string>
+
+    <!-- 分类 -->
+    <string name="category_work">工作</string>
+    <string name="category_personal">个人</string>
+    <string name="category_health">健康</string>
+</resources>

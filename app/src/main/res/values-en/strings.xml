@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Todo List</string>
+
+    <!-- Login Screen -->
+    <string name="login_welcome">Welcome Back</string>
+    <string name="login_subtitle">Sign in to continue</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="no_account">Don\'t have an account? Sign Up</string>
+
+    <!-- Register Screen -->
+    <string name="register_title">Create Account</string>
+    <string name="register_subtitle">Sign up to get started</string>
+    <string name="display_name">Display Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="have_account">Already have an account? Login</string>
+
+    <!-- Todo Header -->
+    <string name="my_tasks">My Tasks</string>
+    <string name="tasks_summary">%1$d tasks today · %2$d completed</string>
+    <string name="welcome_user">Welcome, %1$s</string>
+
+    <!-- Todo Tabs -->
+    <string name="tab_all">All</string>
+    <string name="tab_active">Active</string>
+    <string name="tab_completed">Completed</string>
+
+    <!-- Todo Input -->
+    <string name="add_task_hint">Add a new task...</string>
+    <string name="add_task">Add task</string>
+    <string name="category_label">Category:</string>
+
+    <!-- Todo Item -->
+    <string name="delete_task">Delete task</string>
+    <string name="due_today_at">Due today at %1$s</string>
+    <string name="due_date">Due %1$s</string>
+
+    <!-- Edit Dialog -->
+    <string name="edit_task">Edit Task</string>
+    <string name="title">Title</string>
+    <string name="description_optional">Description (optional)</string>
+    <string name="due_date_label">Due date:</string>
+    <string name="select_date">Select date</string>
+    <string name="select_time">Select time</string>
+    <string name="set_time">Set time</string>
+    <string name="not_set">Not set</string>
+    <string name="clear">Clear</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="ok">OK</string>
+
+    <!-- Todo List -->
+    <string name="no_tasks">No tasks yet.\nAdd a task to get started!</string>
+
+    <!-- Menu -->
+    <string name="menu">Menu</string>
+    <string name="logout">Logout</string>
+    <string name="language">Language</string>
+    <string name="chinese">中文</string>
+    <string name="english">English</string>
+
+    <!-- Categories -->
+    <string name="category_work">Work</string>
+    <string name="category_personal">Personal</string>
+    <string name="category_health">Health</string>
+</resources>
