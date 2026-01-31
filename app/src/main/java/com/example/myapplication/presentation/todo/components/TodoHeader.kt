@@ -9,8 +9,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.myapplication.R
 import com.example.myapplication.presentation.theme.Purple400
 import com.example.myapplication.presentation.theme.Purple600
 import java.text.SimpleDateFormat
@@ -46,7 +48,7 @@ fun TodoHeader(
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "My Tasks",
+                text = stringResource(R.string.my_tasks),
                 style = MaterialTheme.typography.headlineMedium,
                 color = Color.White,
                 fontWeight = FontWeight.Bold
@@ -55,7 +57,7 @@ fun TodoHeader(
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "$todayTasksCount tasks today · $completedTasksCount completed",
+                text = stringResource(R.string.tasks_summary, todayTasksCount, completedTasksCount),
                 style = MaterialTheme.typography.bodyMedium,
                 color = Color.White.copy(alpha = 0.8f)
             )

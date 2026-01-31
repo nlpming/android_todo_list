@@ -11,8 +11,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import com.example.myapplication.R
 import com.example.myapplication.domain.model.Todo
 import com.example.myapplication.presentation.theme.BorderColor
 import com.example.myapplication.presentation.theme.DarkBorderColor
@@ -80,13 +82,14 @@ fun TodoItem(
             IconButton(onClick = onDelete) {
                 Icon(
                     imageVector = Icons.Default.Close,
-                    contentDescription = "Delete task"
+                    contentDescription = stringResource(R.string.delete_task)
                 )
             }
         }
     }
 }
 
+@Composable
 private fun formatDueDate(timestamp: Long): String {
     val date = Date(timestamp)
     val today = Calendar.getInstance()
@@ -95,10 +98,16 @@ private fun formatDueDate(timestamp: Long): String {
     return when {
         today.get(Calendar.YEAR) == dueDate.get(Calendar.YEAR) &&
                 today.get(Calendar.DAY_OF_YEAR) == dueDate.get(Calendar.DAY_OF_YEAR) -> {
-            "Due today at ${SimpleDateFormat("h:mm a", Locale.getDefault()).format(date)}"
+            stringResource(
+                R.string.due_today_at,
+                SimpleDateFormat("h:mm a", Locale.getDefault()).format(date)
+            )
         }
         else -> {
-            "Due ${SimpleDateFormat("MMM dd", Locale.getDefault()).format(date)}"
+            stringResource(
+                R.string.due_date,
+                SimpleDateFormat("MMM dd", Locale.getDefault()).format(date)
+            )
         }
     }
 }

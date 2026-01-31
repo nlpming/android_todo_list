@@ -6,18 +6,22 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.myapplication.R
 import com.example.myapplication.presentation.todo.components.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodoScreen(
     onLogout: () -> Unit,
+    onLanguageChange: () -> Unit,
     viewModel: TodoViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     var showMenu by remember { mutableStateOf(false) }
+    var showLanguageMenu by remember { mutableStateOf(false) }
     val snackbarHostState = remember { SnackbarHostState() }
 
     LaunchedEffect(state.error) {
@@ -30,12 +34,19 @@ fun TodoScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { },
+                title = {
+                    state.currentUser?.let { user ->
+                        Text(
+                            text = stringResource(R.string.welcome_user, user.displayName),
+                            style = MaterialTheme.typography.titleMedium
+                        )
+                    }
+                },
                 actions = {
                     IconButton(onClick = { showMenu = true }) {
                         Icon(
                             imageVector = Icons.Default.MoreVert,
-                            contentDescription = "Menu"
+                            contentDescription = stringResource(R.string.menu)
                         )
                     }
 
@@ -44,10 +55,39 @@ fun TodoScreen(
                         onDismissRequest = { showMenu = false }
                     ) {
                         DropdownMenuItem(
-                            text = { Text("Logout") },
+                            text = { Text(stringResource(R.string.language)) },
+                            onClick = { showLanguageMenu = true }
+                        )
+
+                        DropdownMenuItem(
+                            text = { Text(stringResource(R.string.logout)) },
                             onClick = {
                                 showMenu = false
                                 viewModel.onLogout(onLogout)
+                            }
+                        )
+                    }
+
+                    // Language submenu
+                    DropdownMenu(
+                        expanded = showLanguageMenu,
+                        onDismissRequest = { showLanguageMenu = false }
+                    ) {
+                        DropdownMenuItem(
+                            text = { Text(stringResource(R.string.chinese)) },
+                            onClick = {
+                                showLanguageMenu = false
+                                showMenu = false
+                                viewModel.onLanguageChange("zh", onLanguageChange)
+                            }
+                        )
+
+                        DropdownMenuItem(
+                            text = { Text(stringResource(R.string.english)) },
+                            onClick = {
+                                showLanguageMenu = false
+                                showMenu = false
+                                viewModel.onLanguageChange("en", onLanguageChange)
                             }
                         )
                     }
@@ -74,6 +114,8 @@ fun TodoScreen(
                 onValueChange = viewModel::onNewTodoTitleChange,
                 selectedCategory = state.selectedCategory,
                 onCategoryChange = viewModel::onCategoryChange,
+                dueDate = state.newTodoDueDate,
+                onDueDateChange = viewModel::onDueDateChange,
                 onAddClick = viewModel::onAddTodo
             )
 

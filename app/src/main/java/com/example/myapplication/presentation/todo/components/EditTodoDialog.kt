@@ -7,7 +7,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.myapplication.R
 import com.example.myapplication.domain.model.Todo
 import com.example.myapplication.domain.model.TodoCategory
 import java.text.SimpleDateFormat
@@ -43,7 +45,7 @@ fun EditTodoDialog(
                     .padding(24.dp)
             ) {
                 Text(
-                    text = "Edit Task",
+                    text = stringResource(R.string.edit_task),
                     style = MaterialTheme.typography.headlineSmall
                 )
 
@@ -52,7 +54,7 @@ fun EditTodoDialog(
                 OutlinedTextField(
                     value = title,
                     onValueChange = { title = it },
-                    label = { Text("Title") },
+                    label = { Text(stringResource(R.string.title)) },
                     modifier = Modifier.fillMaxWidth(),
                     singleLine = true
                 )
@@ -62,7 +64,7 @@ fun EditTodoDialog(
                 OutlinedTextField(
                     value = description,
                     onValueChange = { description = it },
-                    label = { Text("Description (optional)") },
+                    label = { Text(stringResource(R.string.description_optional)) },
                     modifier = Modifier.fillMaxWidth(),
                     maxLines = 3
                 )
@@ -75,7 +77,7 @@ fun EditTodoDialog(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = "Category:",
+                        text = stringResource(R.string.category_label),
                         style = MaterialTheme.typography.bodyMedium
                     )
 
@@ -111,7 +113,7 @@ fun EditTodoDialog(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = "Due date:",
+                        text = stringResource(R.string.due_date_label),
                         style = MaterialTheme.typography.bodyMedium
                     )
 
@@ -120,19 +122,19 @@ fun EditTodoDialog(
                     TextButton(onClick = { showDatePicker = true }) {
                         Icon(
                             imageVector = Icons.Default.DateRange,
-                            contentDescription = "Select date"
+                            contentDescription = stringResource(R.string.select_date)
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
                             text = dueDate?.let {
                                 SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(it))
-                            } ?: "Not set"
+                            } ?: stringResource(R.string.not_set)
                         )
                     }
 
                     if (dueDate != null) {
                         TextButton(onClick = { dueDate = null }) {
-                            Text("Clear")
+                            Text(stringResource(R.string.clear))
                         }
                     }
                 }
@@ -144,7 +146,7 @@ fun EditTodoDialog(
                     horizontalArrangement = Arrangement.End
                 ) {
                     TextButton(onClick = onDismiss) {
-                        Text("Cancel")
+                        Text(stringResource(R.string.cancel))
                     }
 
                     Spacer(modifier = Modifier.width(8.dp))
@@ -164,7 +166,7 @@ fun EditTodoDialog(
                         },
                         enabled = title.isNotBlank()
                     ) {
-                        Text("Save")
+                        Text(stringResource(R.string.save))
                     }
                 }
             }
@@ -183,12 +185,12 @@ fun EditTodoDialog(
                         showDatePicker = false
                     }
                 ) {
-                    Text("OK")
+                    Text(stringResource(R.string.ok))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showDatePicker = false }) {
-                    Text("Cancel")
+                    Text(stringResource(R.string.cancel))
                 }
             }
         ) {

@@ -18,7 +18,8 @@ import kotlinx.coroutines.flow.first
 @Composable
 fun NavGraph(
     navController: NavHostController,
-    userPreferences: UserPreferences
+    userPreferences: UserPreferences,
+    onLanguageChange: () -> Unit
 ) {
     var startDestination by remember { mutableStateOf<String?>(null) }
 
@@ -68,7 +69,8 @@ fun NavGraph(
                         navController.navigate(Screen.Login.route) {
                             popUpTo(Screen.TodoMain.route) { inclusive = true }
                         }
-                    }
+                    },
+                    onLanguageChange = onLanguageChange
                 )
             }
         }

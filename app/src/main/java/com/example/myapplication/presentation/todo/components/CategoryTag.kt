@@ -8,7 +8,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.myapplication.R
 import com.example.myapplication.domain.model.TodoCategory
 
 @Composable
@@ -22,7 +24,11 @@ fun CategoryTag(
         shape = RoundedCornerShape(12.dp)
     ) {
         Text(
-            text = category.displayName,
+            text = when (category) {
+                TodoCategory.WORK -> stringResource(R.string.category_work)
+                TodoCategory.PERSONAL -> stringResource(R.string.category_personal)
+                TodoCategory.HEALTH -> stringResource(R.string.category_health)
+            },
             style = MaterialTheme.typography.labelSmall,
             color = category.color,
             modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)

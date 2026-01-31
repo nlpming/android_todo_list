@@ -1,24 +1,28 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.androidx.room)
 }
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk = 36
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.myapplication"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildTypes {
@@ -40,8 +44,8 @@ android {
     buildFeatures {
         compose = true
     }
-    room {
-        schemaDirectory("$projectDir/schemas")
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
 }
 

@@ -11,12 +11,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.myapplication.R
 import com.example.myapplication.presentation.theme.Purple400
 import com.example.myapplication.presentation.theme.Purple600
 
@@ -57,7 +59,7 @@ fun LoginScreen(
             ) {
                 // Title
                 Text(
-                    text = "Welcome Back",
+                    text = stringResource(R.string.login_welcome),
                     style = MaterialTheme.typography.headlineLarge,
                     color = Color.White,
                     fontWeight = FontWeight.Bold
@@ -66,7 +68,7 @@ fun LoginScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "Sign in to continue",
+                    text = stringResource(R.string.login_subtitle),
                     style = MaterialTheme.typography.bodyLarge,
                     color = Color.White.copy(alpha = 0.8f)
                 )
@@ -88,7 +90,7 @@ fun LoginScreen(
                         OutlinedTextField(
                             value = state.username,
                             onValueChange = viewModel::onUsernameChange,
-                            label = { Text("Username") },
+                            label = { Text(stringResource(R.string.username)) },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true,
                             enabled = !state.isLoading
@@ -100,7 +102,7 @@ fun LoginScreen(
                         OutlinedTextField(
                             value = state.password,
                             onValueChange = viewModel::onPasswordChange,
-                            label = { Text("Password") },
+                            label = { Text(stringResource(R.string.password)) },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true,
                             visualTransformation = PasswordVisualTransformation(),
@@ -122,7 +124,7 @@ fun LoginScreen(
                                     color = Color.White
                                 )
                             } else {
-                                Text("Login")
+                                Text(stringResource(R.string.login))
                             }
                         }
 
@@ -134,7 +136,7 @@ fun LoginScreen(
                             modifier = Modifier.fillMaxWidth(),
                             enabled = !state.isLoading
                         ) {
-                            Text("Don't have an account? Sign Up")
+                            Text(stringResource(R.string.no_account))
                         }
                     }
                 }

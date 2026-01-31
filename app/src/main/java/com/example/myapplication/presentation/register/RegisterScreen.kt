@@ -11,12 +11,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.myapplication.R
 import com.example.myapplication.presentation.theme.Purple400
 import com.example.myapplication.presentation.theme.Purple600
 
@@ -57,7 +59,7 @@ fun RegisterScreen(
             ) {
                 // Title
                 Text(
-                    text = "Create Account",
+                    text = stringResource(R.string.register_title),
                     style = MaterialTheme.typography.headlineLarge,
                     color = Color.White,
                     fontWeight = FontWeight.Bold
@@ -66,7 +68,7 @@ fun RegisterScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "Sign up to get started",
+                    text = stringResource(R.string.register_subtitle),
                     style = MaterialTheme.typography.bodyLarge,
                     color = Color.White.copy(alpha = 0.8f)
                 )
@@ -88,7 +90,7 @@ fun RegisterScreen(
                         OutlinedTextField(
                             value = state.username,
                             onValueChange = viewModel::onUsernameChange,
-                            label = { Text("Username") },
+                            label = { Text(stringResource(R.string.username)) },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true,
                             enabled = !state.isLoading
@@ -100,7 +102,7 @@ fun RegisterScreen(
                         OutlinedTextField(
                             value = state.displayName,
                             onValueChange = viewModel::onDisplayNameChange,
-                            label = { Text("Display Name") },
+                            label = { Text(stringResource(R.string.display_name)) },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true,
                             enabled = !state.isLoading
@@ -112,7 +114,7 @@ fun RegisterScreen(
                         OutlinedTextField(
                             value = state.password,
                             onValueChange = viewModel::onPasswordChange,
-                            label = { Text("Password") },
+                            label = { Text(stringResource(R.string.password)) },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true,
                             visualTransformation = PasswordVisualTransformation(),
@@ -126,7 +128,7 @@ fun RegisterScreen(
                         OutlinedTextField(
                             value = state.confirmPassword,
                             onValueChange = viewModel::onConfirmPasswordChange,
-                            label = { Text("Confirm Password") },
+                            label = { Text(stringResource(R.string.confirm_password)) },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true,
                             visualTransformation = PasswordVisualTransformation(),
@@ -152,7 +154,7 @@ fun RegisterScreen(
                                     color = Color.White
                                 )
                             } else {
-                                Text("Sign Up")
+                                Text(stringResource(R.string.sign_up))
                             }
                         }
 
@@ -164,7 +166,7 @@ fun RegisterScreen(
                             modifier = Modifier.fillMaxWidth(),
                             enabled = !state.isLoading
                         ) {
-                            Text("Already have an account? Login")
+                            Text(stringResource(R.string.have_account))
                         }
                     }
                 }

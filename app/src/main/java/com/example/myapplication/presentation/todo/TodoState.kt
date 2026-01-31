@@ -3,17 +3,20 @@ package com.example.myapplication.presentation.todo
 import com.example.myapplication.domain.model.Todo
 import com.example.myapplication.domain.model.TodoCategory
 import com.example.myapplication.domain.model.TodoFilter
+import com.example.myapplication.domain.model.User
 
 data class TodoState(
     val todos: List<Todo> = emptyList(),
     val currentFilter: TodoFilter = TodoFilter.ALL,
     val newTodoTitle: String = "",
     val selectedCategory: TodoCategory = TodoCategory.PERSONAL,
+    val newTodoDueDate: Long? = null,
     val isLoading: Boolean = false,
     val error: String? = null,
     val showEditDialog: Boolean = false,
     val editingTodo: Todo? = null,
-    val currentUserId: Long = 0
+    val currentUserId: Long = 0,
+    val currentUser: User? = null
 ) {
     val filteredTodos: List<Todo>
         get() = when (currentFilter) {

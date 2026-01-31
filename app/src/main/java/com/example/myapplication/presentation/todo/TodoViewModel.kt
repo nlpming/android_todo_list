@@ -20,6 +20,7 @@ class TodoViewModel @Inject constructor(
     private val deleteTodoUseCase: DeleteTodoUseCase,
     private val toggleTodoCompletionUseCase: ToggleTodoCompletionUseCase,
     private val logoutUseCase: LogoutUseCase,
+    private val getCurrentUserUseCase: GetCurrentUserUseCase,
     private val userPreferences: UserPreferences
 ) : ViewModel() {
 
@@ -35,6 +36,11 @@ class TodoViewModel @Inject constructor(
             userPreferences.userId.collect { userId ->
                 if (userId != null) {
                     _state.update { it.copy(currentUserId = userId) }
+
+                    // Load complete user information
+                    val user = getCurrentUserUseCase()
+                    _state.update { it.copy(currentUser = user) }
+
                     loadTodos(userId)
                 }
             }
@@ -57,6 +63,10 @@ class TodoViewModel @Inject constructor(
         _state.update { it.copy(selectedCategory = category) }
     }
 
+    fun onDueDateChange(dueDate: Long?) {
+        _state.update { it.copy(newTodoDueDate = dueDate) }
+    }
+
     fun onFilterChange(filter: TodoFilter) {
         _state.update { it.copy(currentFilter = filter) }
     }
@@ -66,12 +76,13 @@ class TodoViewModel @Inject constructor(
             val newTodo = Todo(
                 userId = _state.value.currentUserId,
                 title = _state.value.newTodoTitle,
-                category = _state.value.selectedCategory
+                category = _state.value.selectedCategory,
+                dueDate = _state.value.newTodoDueDate
             )
 
             addTodoUseCase(newTodo).fold(
                 onSuccess = {
-                    _state.update { it.copy(newTodoTitle = "") }
+                    _state.update { it.copy(newTodoTitle = "", newTodoDueDate = null) }
                 },
                 onFailure = { exception ->
                     _state.update { it.copy(error = exception.message) }
@@ -137,5 +148,12 @@ class TodoViewModel @Inject constructor(
 
     fun clearError() {
         _state.update { it.copy(error = null) }
+    }
+
+    fun onLanguageChange(languageCode: String, onLanguageChanged: () -> Unit) {
+        viewModelScope.launch {
+            userPreferences.saveLanguage(languageCode)
+            onLanguageChanged()
+        }
     }
 }

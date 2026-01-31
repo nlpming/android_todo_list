@@ -6,7 +6,9 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.myapplication.R
 import com.example.myapplication.domain.model.TodoFilter
 
 @Composable
@@ -26,9 +28,9 @@ fun TodoTabs(
                 text = {
                     Text(
                         text = when (filter) {
-                            TodoFilter.ALL -> "All"
-                            TodoFilter.ACTIVE -> "Active"
-                            TodoFilter.COMPLETED -> "Completed"
+                            TodoFilter.ALL -> stringResource(R.string.tab_all)
+                            TodoFilter.ACTIVE -> stringResource(R.string.tab_active)
+                            TodoFilter.COMPLETED -> stringResource(R.string.tab_completed)
                         },
                         modifier = Modifier.padding(vertical = 8.dp)
                     )
